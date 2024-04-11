@@ -1,18 +1,35 @@
 
 body {
-    background-color: aqua;
+    background-color: lightcyan;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin:0;
 
 }
 
-a{
-    font-size: 20px;
-}
-p{
-    font-size: 50px;
-}
 h1{
-    background-color: orange;
+    background-color: rgb(87, 205, 245);
     font-size: 50px;
+    border-radius: 20px;
     font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: white;
+    display: inline-block;
+    padding: 10px 20px;
 
+
+}
+
+label{
+    display: block;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 500;   
+    
+}
+
+#form {
+    text-align: center; 
 }
