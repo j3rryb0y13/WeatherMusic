@@ -21,3 +21,38 @@ function generateWeather(weather){
     console.log(weather)
     
 }
+
+
+// YouTube API Integration
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+var player;
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+        height: '360',
+        width: '640',
+        videoId: 'dQw4w9WgXcQ',
+        playerVars: {
+          'playsinline': 1
+        },
+        events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+        }
+    });
+}
+
+// Functions for YouTube player events
+function onPlayerReady(event) {
+  console.log("Player is ready");
+  event.target.playVideo();
+    // Code to execute when the player is ready
+}
+
+function onPlayerStateChange(event) {
+    // Code to execute on player state change
+    console.log("Player Change:" , event.data);
+}
