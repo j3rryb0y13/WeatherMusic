@@ -10,16 +10,15 @@
 <body>
     <header>
         <h1>Weather Music</h1>
-        <br>
-        <form id="form" action="/submit-form" method="post">
-            <label for="City-Input">Search for a City:</label>
-            <br>
-            <input type="text" id="City-Input" placeholder="Enter City" name="Name" required>
-            <br>
-            <input type="submit" id="submit" value="search">
-        </form>
     </header>
-    
+    <form id="form" action="/submit-form" method="post">
+        <label for="City-Input">Search for a City:</label>
+        <br>
+        <input type="text" id="City-Input" placeholder="Enter City" name="Name" required>
+        <br>
+        <input type="submit" id="submit" value="search">
+    </form>
+    <div id="player"></div>
 <script src="./assets/js/script.js"></script>
 </body>
 </html>
