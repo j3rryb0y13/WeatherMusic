@@ -1,4 +1,4 @@
-const APIkey = "46d353ce29765dbac0983953dafd4b19"
+
 
 $("form").on("submit",function(event){
     event.preventDefault();
