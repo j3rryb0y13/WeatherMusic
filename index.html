@@ -3,23 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weather Music</title>
     <link rel="stylesheet" src=".assets/css/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <header>
         <h1>Weather Music</h1>
-        <br>
-        <form id="form" action="/submit-form" method="post">
-            <label for="City-Input">Search for a City:</label>
-            <br>
-            <input type="text" id="City-Input" placeholder="Enter City" name="Name" required>
-            <br>
-            <input type="submit" id="submit" value="search">
-        </form>
     </header>
-    
+    <form id="form" action="/submit-form" method="post">
+        <label for="City-Input">Search for a City:</label>
+        <br>
+        <input type="text" id="City-Input" placeholder="Enter City" name="Name" required>
+        <br>
+        <input type="submit" id="submit" value="search">
+        <div id="weather-container"></div>
+        <div id="music-playlist-container"></div>
+    </form>
+    <div id="player"></div>
 <script src="./assets/js/script.js"></script>
+<footer>
+    <P>Created by Kaetlynn Buchholz, Ameer Clark, Jeremy Koehler, Amadou Saho</P>
+</footer>
 </body>
 </html>
