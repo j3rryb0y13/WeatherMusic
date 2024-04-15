@@ -1,0 +1,157 @@
+:root {
+  --box-width: calc(20% - 20px); 
+  --box-padding: 10px;
+  --box-margin: 10px;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #333;
+  color: #fff;
+}
+
+.container {
+  display: flex;
+  flex: 1;  
+  overflow: hidden;  /* Keeps all content within the full height minus header/footer */
+}
+
+.search-container {
+  width: 300px;  /* Fixed width for the search component */
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: space-around;
+  width: 100%; 
+}
+
+
+.forecast-container {
+  display: flex;
+  flex-direction: row; 
+  flex-wrap: nowrap; 
+  justify-content: space-around; 
+  overflow-x: auto; 
+  width: 100%; 
+  padding: 20px; 
+  margin-bottom: 20px; 
+}
+
+.forecast-box {
+  width: calc(16% - 20px); /* Smaller width than before */
+  padding: 8px; /* Reduced padding for more compact appearance */
+  margin: 10px; /* Maintains margin for spacing between boxes */
+  background-color: #fff;
+  border-radius: 8px; /* Adjust if needed */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.forecast-wrapper, #player {
+  max-width: 960px; 
+  width: 100%; /* Ensure it takes the full width of its container up to max-width */
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#player {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-box {
+  position: relative;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#City-Input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+.search-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: none;
+  border: none;
+  color: #666;
+  padding: 8px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.search-btn:hover {
+  color: #333;
+}
+
+.forecast-box {
+  width: var(--box-width);
+  padding: var(--box-padding);
+  margin: var(--box-margin);
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+footer {
+  padding: 20px;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.footer-person {
+  flex: 1;
+  text-align: center;
+}
+
+.footer-person p, .footer-person a {
+  margin: 5px 0;
+  color: #4caf50;
+  text-decoration: none;
+}
+
+.footer-person a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 800px) {
+  .container {
+    flex-direction: column;
+  }
+  .search-container, .content-container {
+    width: 100%;
+  }
+}

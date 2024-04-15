@@ -4,26 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Music</title>
-    <link rel="stylesheet" src=".assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <header>
         <h1>Weather Music</h1>
     </header>
-    <form id="form" action="/submit-form" method="post">
-        <label for="City-Input">Search for a City:</label>
-        <br>
-        <input type="text" id="City-Input" placeholder="Enter City" name="Name" required>
-        <br>
-        <input type="submit" id="submit" value="search">
-        <div id="weahter-container"></div>
-        <div id="music-playlist-container"></div>
-    </form>
-    <div id="player"></div>
-<script src="./assets/js/script.js"></script>
-<footer>
-    <P>Created by Kaetlynn Buchholz, Ameer Clark, Jeremy Koehler, Amadou Saho</P>
-</footer>
+    <div class="container">
+        <div class="search-container">
+            <form id="form" action="/submit-form" method="post">
+                <div class="search-box">
+                    <input type="text" id="City-Input" placeholder="Search city or zip code" name="Name" required>
+                    <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+        </div>
+        <div class="content-container">
+            <div class="forecast-wrapper">
+                <h2>5 Day Forecast</h2>
+                <div id="weather-forecast" class="forecast-container">
+                    <!-- Forecast boxes will be dynamically generated here -->
+                </div>
+            </div>
+            <div id="player">
+                <!-- YouTube iFrame API will load the video here -->
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-person">
+            <h4># 1</h4>
+            <p>Email: <a href="Email">Ur Email</a></p>
+            <p>Portfolio: <a href="URL here" target="_blank">Name of profolio</a></p>
+        </div>
+        <div class="footer-person">
+            <h4># 2</h4>
+            <p>Email: <a href="Email">Ur Email</a></p>
+            <p>Portfolio: <a href="URL here" target="_blank">Name of profolio</a></p>
+        </div>
+        <div class="footer-person">
+            <h4># 3</h4>
+            <p>Email: <a href="Email">Ur Email</a></p>
+            <p>Portfolio: <a href="URL here" target="_blank">Name of profolio</a></p>
+        </div>
+        <div class="footer-person">
+            <h4># 4</h4>
+            <p>Email: <a href="Email">Ur Email</a></p>
+            <p>Portfolio: <a href="URL here" target="_blank">Name of profolio</a></p>
+        </div>
+    </footer>
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
