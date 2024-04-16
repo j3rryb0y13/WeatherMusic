@@ -11,8 +11,41 @@ $("form").on("submit",function(event){
     .then(response => {
         return response.json()
     })
-    .then(data => generateWeather(data))
-   // .catch(error => console.log('ERROR'))
+    .then(data =>{
+
+        //const weatherId = data.weather[0].id
+        const weatherId = 800
+        generateWeather(data)
+        if(weatherId <= 232){
+            return fetch(`https://placeholder.com/rock-music`)
+
+        }else if(weatherId >= 233 && weatherId <= 321){
+            return fetch(`https://placeholder.com/sad-songs`)
+        }else if(weatherId >= 322 && weatherId <= 531){
+            return fetch(`https://placeholder.com/usher`)
+        }else if(weatherId >= 532 && weatherId <= 622){
+            return fetch(`https://placeholder.com/christmas-music`)
+        }else if(weatherId >= 623 && weatherId <= 781){
+            return fetch(`https://placeholder.com/spatial-audio`)
+        }else if(weatherId == 800){
+            return "ZbZSe6N_BXs"
+        }else if(weatherId >= 801){
+            return `https://placeholder.com/carpenters-rainy-days-are-mondays`
+        }
+    })
+    .then(response => {
+        if(typeof response === "string"){
+            console.log(response)
+            return response;
+        }else{
+            return response.json()
+
+        }
+    }).then(videoRes =>{
+        console.log(videoRes)
+        onYouTubeIframeAPIReady(videoRes)
+    })
+    .catch(error => console.log(error))
     localStorage.setItem('cityname', city)
 
     
@@ -44,17 +77,18 @@ const cardBody = $('<div>').addClass('card-body')
 
 
 // YouTube API Integration
-var tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var player;
-function onYouTubeIframeAPIReady() {
+function onYouTubeIframeAPIReady(videoId) {
+    console.log(videoId)
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     player = new YT.Player('player', {
         height: '360',
         width: '640',
-        videoId: 'dQw4w9WgXcQ',
+        videoId,
         playerVars: {
           'playsinline': 1
         },
