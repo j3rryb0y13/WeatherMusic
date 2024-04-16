@@ -96,7 +96,7 @@ input {
     
 }
 
-/**
+
 
 @media screen and (max-width: 992px) {
     body {
@@ -162,6 +162,50 @@ input {
        
         max-width: 90%; 
         margin-top: 5%; 
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    h1 {
+        
+        font-size: 40px;
+        flex-basis: 100%;
+        text-align: center;
+    }
+
+    #submit {
+        width: 80px;
+    }
+
+    .footer {
+        position: relative; 
+        bottom: auto;
+        width: 100%;
+        margin-bottom: 5%; 
+    }
+
+
+}
+
+@media screen and (max-width: 576px) {
+    body {
+        
+        justify-content: center; 
+        align-items: center; 
+        flex-direction: column; 
+    }
+
+    #appImg {
+        flex-basis: 100%; 
+        margin-bottom: 10px; 
+    }
+
+
+    .header {
+       
+        max-width: 75%; 
+        margin-top: 1%; 
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
