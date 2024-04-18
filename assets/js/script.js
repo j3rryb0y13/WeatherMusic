@@ -1,5 +1,6 @@
 const APIkey = "46d353ce29765dbac0983953dafd4b19"
-
+const GooKey = "AIzaSyDdp5iphkWD7E92Kt38IlGzoDj2p1pBmQs"
+let videoId
 $("form").on("submit",function(event){
     event.preventDefault();
     
@@ -13,24 +14,24 @@ $("form").on("submit",function(event){
     })
     .then(data =>{
 
-        //const weatherId = data.weather[0].id
+        // const weatherId = data.weather[0].id
         const weatherId = 800
         generateWeather(data)
         if(weatherId <= 232){
-            return fetch(`https://placeholder.com/rock-music`)
+            return fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=rain&key=${GooKey}`)
 
         }else if(weatherId >= 233 && weatherId <= 321){
-            return fetch(`https://placeholder.com/sad-songs`)
+            return fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=jazz&key=${GooKey}`)
         }else if(weatherId >= 322 && weatherId <= 531){
-            return fetch(`https://placeholder.com/usher`)
+            return fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=rnb&key=${GooKey}`)
         }else if(weatherId >= 532 && weatherId <= 622){
-            return fetch(`https://placeholder.com/christmas-music`)
+            return fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=rickroll&key=${GooKey}`)
         }else if(weatherId >= 623 && weatherId <= 781){
-            return fetch(`https://placeholder.com/spatial-audio`)
+            return fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=popmusic&key=${GooKey}`)
         }else if(weatherId == 800){
-            return "ZbZSe6N_BXs"
+            return fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=country&key=${GooKey}`)
         }else if(weatherId >= 801){
-            return `https://placeholder.com/carpenters-rainy-days-are-mondays`
+            return fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=classical&key=${GooKey}`)
         }
     })
     .then(response => {
@@ -43,13 +44,13 @@ $("form").on("submit",function(event){
         }
     }).then(videoRes =>{
         console.log(videoRes)
-        onYouTubeIframeAPIReady(videoRes)
+        videoId = videoRes.items[0].id.videoId
+        renderYT()
     })
     .catch(error => console.log(error))
     localStorage.setItem('cityname', city)
 
     
-    this.reset();
 })
 
 function generateWeather(weather){
@@ -78,35 +79,48 @@ const cardBody = $('<div>').addClass('card-body')
 
 // YouTube API Integration
 
-var player;
-function onYouTubeIframeAPIReady(videoId) {
-    console.log(videoId)
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    player = new YT.Player('player', {
-        height: '360',
-        width: '640',
-        videoId,
-        playerVars: {
-          'playsinline': 1
-        },
-        events: {
+function renderYT() {
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+}
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '390',
+          width: '640',
+          videoId,
+          playerVars: {
+            'playsinline': 1
+          },
+          events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+        //   setTimeout(stopVideo, 6000);
+          done = true;
         }
-    });
-}
-
-// Functions for YouTube player events
-function onPlayerReady(event) {
-  console.log("Player is ready");
-  event.target.playVideo();
-    // Code to execute when the player is ready
-}
-
-function onPlayerStateChange(event) {
-    // Code to execute on player state change
-    console.log("Player Change:" , event.data);
-}
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+    
